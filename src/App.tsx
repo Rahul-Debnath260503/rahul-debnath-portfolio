@@ -584,12 +584,12 @@ function App() {
             <span>03</span> Research & Publications
           </div>
           <div className="research-hero" data-reveal>
-            <p>3 accepted international research papers</p>
+            <p>3 research papers accepted at international conferences</p>
             <h2>Remote sensing, climate justice, and AI research with visible leadership impact.</h2>
           </div>
           <div className="publication-timeline">
             {portfolio.publications.map((paper, index) => (
-              <article className={paper.priority ? "paper-card priority-paper" : "paper-card"} key={paper.title} data-reveal>
+              <article className="paper-card priority-paper" key={paper.title} data-reveal>
                 <div className="paper-index">0{index + 1}</div>
                 <div>
                   <span className="paper-status">{paper.status}</span>

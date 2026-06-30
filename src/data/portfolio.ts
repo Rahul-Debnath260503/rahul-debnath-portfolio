@@ -36,7 +36,7 @@ export const portfolio = {
     { value: "95.15%", label: "Validation accuracy on urban tree classification" },
     { value: "490 GB", label: "Aerial imagery engineered into an ML pipeline" },
     { value: "Agentic AI", label: "Delivered PolicyMind-AI for insurance document intelligence" },
-    { value: "3", label: "Accepted international research papers" },
+    { value: "3", label: "Research papers accepted at international conferences" },
   ],
   experience: [
     {
@@ -96,13 +96,13 @@ export const portfolio = {
       status: "Accepted",
     },
     {
-      venue: "International Publication",
+      venue: "International Conference",
       title:
         "AI-Driven Soil Nutrient Mapping Using Geostatistical, Machine Learning and Deep Learning Approaches",
       project: "AI-driven soil nutrient mapping",
-      conference: "Accepted international research paper",
+      conference: "Accepted for presentation",
       description:
-        "An accepted international publication showcasing applied AI, geostatistics, machine learning, and deep learning for soil nutrient mapping and agricultural intelligence.",
+        "Accepted at an international conference, showcasing applied AI, geostatistics, machine learning, and deep learning for soil nutrient mapping and agricultural intelligence.",
       status: "Accepted",
     },
   ],
@@ -200,7 +200,11 @@ export const portfolio = {
       label: "AI/ML Software Engineer at RMSI Private Limited, Noida",
       detail: "Since 27 June 2026",
     },
-    { value: "3", label: "Accepted international research papers", detail: "IEEE IGARSS, RGS-IBG, and AI-driven soil nutrient mapping" },
+    {
+      value: "3",
+      label: "Research papers accepted at international conferences",
+      detail: "IEEE IGARSS 2026, RGS-IBG 2026, and AI-driven soil nutrient mapping research",
+    },
     { value: "Lead", label: "Research team coordination", detail: "M.Sc students, PhD scholars, professionals, faculty, and HOD/Professor" },
     { value: "Agentic AI", label: "Delivered PolicyMind-AI", detail: "Insurance document intelligence using RAG and AI agents" },
     { value: "GeoAI", label: "Remote sensing specialization", detail: "SAR, optical imagery, GIS, and Earth observation workflows" },

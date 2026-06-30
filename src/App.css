@@ -28,5 +28,7 @@
 .career-card{background:#0a0d0b;color:var(--ink);border-color:rgba(183,243,74,.34);box-shadow:0 28px 100px rgba(10,13,11,.18),0 0 46px rgba(183,243,74,.08)}
 .career-card h4{color:#d4dccf}.career-card .timeline-date{color:#aeb7ad}.career-card .role-focus{color:var(--cyan)}.career-card .role-summary{color:#c7d0c2}.career-card .career-node span{color:var(--acid)}.career-card .role-badge{background:var(--acid);color:#0a0d0b;box-shadow:0 0 34px rgba(183,243,74,.3)}.career-card .impact-list span{border-color:rgba(183,243,74,.3);background:rgba(183,243,74,.1);color:var(--acid)}
 .publication-timeline{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}.paper-card{height:100%;min-height:560px;display:flex;flex-direction:column}.paper-card>div:last-child{display:flex;flex-direction:column;flex:1}.paper-card p:not(.paper-venue):not(.paper-project){margin-bottom:0}
+.skills-grid{grid-template-columns:minmax(280px,.68fr) minmax(520px,1.32fr);gap:4.5vw}
+.skills-orbital{height:min(88vh,860px);min-height:700px}
 
-@media(max-width:1100px){.publication-timeline{grid-template-columns:1fr}.paper-card{min-height:auto}}@media(max-width:900px){.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.metrics{grid-template-columns:1fr}}
+@media(max-width:1100px){.publication-timeline{grid-template-columns:1fr}.paper-card{min-height:auto}.skills-grid{grid-template-columns:1fr}.skills-orbital{height:760px;min-height:760px}}@media(max-width:900px){.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.metrics{grid-template-columns:1fr}.skills-orbital{height:740px;min-height:740px}}
