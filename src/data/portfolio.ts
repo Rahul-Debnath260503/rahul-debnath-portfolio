@@ -1,7 +1,7 @@
 export const portfolio = {
   name: "Rahul Debnath",
   title: "AI/ML Software Engineer",
-  location: "Noida, India",
+  location: "Noida, Uttar Pradesh, India",
   email: "rahul.ds24@duk.ac.in",
   github: "https://github.com/Rahul-Debnath260503",
   linkedin: "https://www.linkedin.com/in/rahul-debnath-95998433a/",
@@ -14,7 +14,7 @@ export const portfolio = {
     "RAG intelligence products",
     "GeoAI workflows",
     "multi-agent automation",
-    "research that ships",
+    "research-backed AI systems",
   ],
   about:
     "I work at the intersection of AI engineering, agentic systems, and geospatial research: turning satellite imagery, aerial data, complex documents, and field observations into usable machine intelligence. My strength is owning the full path from messy data to trained models, APIs, decision-support tools, and publication-quality research.",
@@ -29,7 +29,10 @@ export const portfolio = {
   ],
   heroBadges: ["Agentic AI", "LLMs", "RAG", "GeoAI", "Remote Sensing"],
   metrics: [
-    { value: "27 Jun 2026", label: "Promoted to AI/ML Software Engineer at RMSI" },
+    {
+      value: "27 Jun 2026",
+      label: "Promoted to AI/ML Software Engineer at RMSI Private Limited, Noida",
+    },
     { value: "95.15%", label: "Validation accuracy on urban tree classification" },
     { value: "490 GB", label: "Aerial imagery engineered into an ML pipeline" },
     { value: "Agentic AI", label: "Delivered PolicyMind-AI for insurance document intelligence" },
@@ -192,7 +195,11 @@ export const portfolio = {
     },
   ],
   achievements: [
-    { value: "Promoted", label: "AI/ML Software Engineer at RMSI", detail: "Since 27 June 2026" },
+    {
+      value: "Promoted",
+      label: "AI/ML Software Engineer at RMSI Private Limited, Noida",
+      detail: "Since 27 June 2026",
+    },
     { value: "3", label: "Accepted international research papers", detail: "IEEE IGARSS, RGS-IBG, and AI-driven soil nutrient mapping" },
     { value: "Lead", label: "Research team coordination", detail: "M.Sc students, PhD scholars, professionals, faculty, and HOD/Professor" },
     { value: "Agentic AI", label: "Delivered PolicyMind-AI", detail: "Insurance document intelligence using RAG and AI agents" },

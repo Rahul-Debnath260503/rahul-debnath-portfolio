@@ -264,10 +264,6 @@ function Portrait() {
 
   return (
     <div className="portrait-card" ref={ref} data-cursor="large">
-      <div className="portrait-hud">
-        <span>AI COMMAND PORTRAIT</span>
-        <strong>ACTIVE</strong>
-      </div>
       <img src={portfolio.portrait} alt="Rahul Debnath portrait" loading="eager" />
       <span className="eye-track eye-left" />
       <span className="eye-track eye-right" />
