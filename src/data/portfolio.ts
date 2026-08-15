@@ -30,7 +30,7 @@ export const portfolio = {
   heroBadges: ["Agentic AI", "LLMs", "RAG", "GeoAI", "Remote Sensing"],
   metrics: [
     {
-      value: "27 Jun 2026",
+      value: "6 Jul 2026",
       label: "Promoted to AI/ML Software Engineer at RMSI Private Limited, Noida",
     },
     { value: "95.15%", label: "Validation accuracy on urban tree classification" },
@@ -40,7 +40,7 @@ export const portfolio = {
   ],
   experience: [
     {
-      period: "Since 27 Jun 2026",
+      period: "Since 6 Jul 2026",
       role: "AI/ML Software Engineer",
       company: "RMSI Private Limited",
       location: "Noida",
@@ -51,7 +51,7 @@ export const portfolio = {
       impact: ["Promotion milestone", "FastAPI services", "Model evaluation", "Geospatial AI delivery"],
     },
     {
-      period: "Jan 2026 - 26 Jun 2026",
+      period: "Jan 2026 - 5 Jul 2026",
       role: "AI/ML Intern",
       company: "RMSI Private Limited",
       location: "Noida",
@@ -198,7 +198,7 @@ export const portfolio = {
     {
       value: "Promoted",
       label: "AI/ML Software Engineer at RMSI Private Limited, Noida",
-      detail: "Since 27 June 2026",
+      detail: "Since 6 July 2026",
     },
     {
       value: "3",
