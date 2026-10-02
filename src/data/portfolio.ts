@@ -2,7 +2,7 @@ export const portfolio = {
   name: "Rahul Debnath",
   title: "AI/ML Software Engineer",
   location: "Noida, Uttar Pradesh, India",
-  email: "rahul.ds24@duk.ac.in",
+  email: "rahul.debnath.062003@gmail.com",
   github: "https://github.com/Rahul-Debnath260503",
   linkedin: "https://www.linkedin.com/in/rahul-debnath-95998433a/",
   resume: "/Rahul_Debnath_CV.pdf",
@@ -276,7 +276,7 @@ export const portfolio = {
       featured: true,
       featuredOrder: 4,
       links: {
-        linkedin: "https://lnkd.in/p/gwcdmJu4",
+        linkedin: "https://lnkd.in/p/gZWu7qQh",
         github: "https://github.com/Rahul-Debnath260503/MedEcho-AI-Voice-Assistant",
       },
     },

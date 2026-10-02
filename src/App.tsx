@@ -432,7 +432,7 @@ function ProjectCard({ project, index, compact = false }: { project: PortfolioPr
   return (
     <article
       className={`project-card${project.title.length > 48 ? " project-card--long-title" : ""}${compact ? " archive-project-card" : ""}`}
-      data-reveal
+      data-reveal={compact ? undefined : true}
       key={project.id || project.title}
       data-cursor="large"
       id={compact ? `project-${project.id}` : undefined}
