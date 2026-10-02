@@ -597,6 +597,11 @@ function App() {
                   <p className="paper-project">{paper.project}</p>
                   <h3>{paper.title}</h3>
                   <p>{paper.description}</p>
+                  {"proof" in paper && paper.proof && (
+                    <a className="paper-proof" href={paper.proof} target="_blank" rel="noreferrer">
+                      LinkedIn achievement proof <FiArrowUpRight />
+                    </a>
+                  )}
                 </div>
               </article>
             ))}

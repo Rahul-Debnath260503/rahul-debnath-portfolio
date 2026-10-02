@@ -100,10 +100,11 @@ export const portfolio = {
       title:
         "AI-Driven Soil Nutrient Mapping Using Geostatistical, Machine Learning and Deep Learning Approaches",
       project: "AI-driven soil nutrient mapping",
-      conference: "Accepted for presentation",
+      conference: "Accepted for presentation | Secured 2nd position",
       description:
-        "Accepted at an international conference, showcasing applied AI, geostatistics, machine learning, and deep learning for soil nutrient mapping and agricultural intelligence.",
-      status: "Accepted",
+        "Accepted at an international conference and secured 2nd position, showcasing applied AI, geostatistics, machine learning, and deep learning for soil nutrient mapping and agricultural intelligence.",
+      status: "Accepted | 2nd Position",
+      proof: "https://lnkd.in/p/gtvJAPbs",
     },
   ],
   skills: [
@@ -201,9 +202,9 @@ export const portfolio = {
       detail: "Since 6 July 2026",
     },
     {
-      value: "3",
+      value: "3 + 2nd",
       label: "Research papers accepted at international conferences",
-      detail: "IEEE IGARSS 2026, RGS-IBG 2026, and AI-driven soil nutrient mapping research",
+      detail: "IEEE IGARSS 2026, RGS-IBG 2026, and AI-driven soil nutrient mapping research with 2nd position distinction",
     },
     { value: "Lead", label: "Research team coordination", detail: "M.Sc students, PhD scholars, professionals, faculty, and HOD/Professor" },
     { value: "Agentic AI", label: "Delivered PolicyMind-AI", detail: "Insurance document intelligence using RAG and AI agents" },
