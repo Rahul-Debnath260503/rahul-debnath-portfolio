@@ -255,6 +255,9 @@ export const portfolio = {
       categories: ["Geospatial", "AI / ML"],
       featured: true,
       featuredOrder: 3,
+      links: {
+        linkedin: "https://lnkd.in/p/gwcdmJu4",
+      },
     },
     {
       id: "med-echo",
@@ -273,6 +276,7 @@ export const portfolio = {
       featured: true,
       featuredOrder: 4,
       links: {
+        linkedin: "https://lnkd.in/p/gwcdmJu4",
         github: "https://github.com/Rahul-Debnath260503/MedEcho-AI-Voice-Assistant",
       },
     },
