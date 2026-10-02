@@ -830,7 +830,7 @@ function App() {
                   </div>
                 )}
                 {"semesters" in education && (
-                  <div className="academic-progress" aria-label="Semester Performance: Sem 1 7.15 out of 10, Sem 2 8.85 out of 10, Sem 3 9.25 out of 10, Sem 4 10.00 / 10.00">
+                  <div className="academic-progress" aria-label="Semester Performance: Sem 1 7.15 out of 10, Sem 2 8.85 out of 10, Sem 3 9.25 out of 10, Sem 4 10.00 out of 10">
                     <div className="progress-head">
                       <span>Academic Progress</span>
                       <strong>+2.85 points</strong>
@@ -914,7 +914,7 @@ function App() {
                   <h3>{paper.title}</h3>
                   <p>{paper.description}</p>
                   {"proof" in paper && paper.proof && (
-                    <a className="paper-proof" href={paper.proof} target="_blank" rel="noreferrer">
+                    <a className="paper-proof" href={paper.proof} target="_blank" rel="noopener noreferrer" data-magnetic>
                       LinkedIn achievement proof <FiArrowUpRight />
                     </a>
                   )}

@@ -87,7 +87,7 @@ export const portfolio = {
         { label: "Sem 1", score: "7.15", value: 7.15 },
         { label: "Sem 2", score: "8.85", value: 8.85 },
         { label: "Sem 3", score: "9.25", value: 9.25 },
-        { label: "Sem 4", score: "10.00 / 10.00", value: 10.0 },
+        { label: "Sem 4", score: "10.00", value: 10.0 },
       ],
     },
     {
