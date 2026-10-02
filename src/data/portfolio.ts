@@ -75,19 +75,19 @@ export const portfolio = {
   ],
   education: [
     {
-      type: "Current / Primary Education",
+      type: "Completed",
       degree: "M.Sc. Data Analytics",
       specialization: "Specialization in Geoinformatics",
       institution: "Kerala University of Digital Sciences, Innovation and Technology",
       formerly: "Formerly IIITM-K",
       location: "Thiruvananthapuram, Kerala, India",
-      period: "Aug 2024 - Present",
+      period: "Aug 2024 - Aug 2026",
       tags: ["DATA ANALYTICS", "GEOINFORMATICS"],
       semesters: [
         { label: "Sem 1", score: "7.15", value: 7.15 },
         { label: "Sem 2", score: "8.85", value: 8.85 },
         { label: "Sem 3", score: "9.25", value: 9.25 },
-        { label: "Sem 4", score: "10.00", value: 10.0 },
+        { label: "Sem 4", score: "10.00 / 10.00", value: 10.0 },
       ],
     },
     {
@@ -123,6 +123,7 @@ export const portfolio = {
       title: "Introduction to Git and GitHub",
       category: "Developer Tools",
       description: "Completed Introduction to Git and GitHub, an online course authorized by Google and offered through Coursera.",
+      link: "https://lnkd.in/p/guKSPTBM",
       icon: "git",
     },
   ],
@@ -201,51 +202,114 @@ export const portfolio = {
   ],
   projects: [
     {
+      id: "climaq",
+      code: "CLIMATE / RAG",
+      title: "CLiMAQ",
+      year: "2025-2026",
+      type: "CLIMATE RISK INTELLIGENCE",
+      category: "Climate Risk Intelligence | Agentic AI | RAG",
+      context: "RMSI / CII SAARTH",
+      domain: "Climate Risk Intelligence",
+      summary:
+        "A real-world climate risk intelligence tool developed by RMSI under CII SAARTH to help organisations understand and manage physical climate risks.",
+      description:
+        "CLiMAQ is a climate risk intelligence tool developed under CII SAARTH to help organisations better understand and manage physical climate risks. Developed by RMSI, CLiMAQ combines localised climate data, forecasts, dashboards and conversational assistance to assess exposure to floods, cyclones, landslides, heatwaves and droughts across assets, operations and supply chains. It supports enterprises, agriculture and subnational governments in identifying vulnerabilities and strengthening climate resilience.",
+      contribution:
+        "Built the Agentic Chatbot capable of performing user-facing tasks and implemented the RAG pipeline for intelligent, context-aware interaction.",
+      tags: ["Agentic AI", "RAG", "Climate Intelligence", "RMSI"],
+      categories: ["Agentic AI", "Climate", "AI / ML"],
+      featured: true,
+      featuredOrder: 1,
+      links: {
+        linkedin: "https://www.linkedin.com/posts/rmsi_ciiglobalsustainabilitysummit-ciigss2026-activity-7499043310976659456-dLWX",
+      },
+    },
+    {
+      id: "policymind-ai",
       code: "AGENT / RAG",
       title: "PolicyMind-AI",
       year: "2026",
       type: "AGENTIC AI",
+      category: "Agentic AI | RAG",
       summary:
         "An agentic RAG insurance document-intelligence system that turns heterogeneous policy PDFs into validated structured data, with specialist agents, evidence tracking, confidence scoring, and correction memory.",
+      description:
+        "An agentic RAG insurance document-intelligence system that turns heterogeneous policy PDFs into validated structured data, with specialist agents, evidence tracking, confidence scoring, and correction memory.",
       tags: ["Agentic AI", "RAG", "Multi-Agent", "FastAPI", "PostgreSQL"],
+      categories: ["Agentic AI", "AI / ML"],
+      featured: true,
+      featuredOrder: 2,
     },
     {
+      id: "enmax-urban-tree-species",
       code: "CV / GEO",
       title: "EnmaX - Urban Tree Species Classification",
       year: "2026",
       type: "GEOSPATIAL AI",
+      category: "Geospatial AI | Computer Vision",
       summary:
         "A city-scale computer-vision pipeline for Calgary that classifies nine tree species from 0.1 m aerial imagery, reaching 95.15% validation accuracy with ResNet18.",
+      description:
+        "A city-scale computer-vision pipeline for Calgary that classifies nine tree species from 0.1 m aerial imagery, reaching 95.15% validation accuracy with ResNet18.",
       tags: ["PyTorch", "ResNet18", "Rasterio", "MLOps"],
+      categories: ["Geospatial", "AI / ML"],
+      featured: true,
+      featuredOrder: 3,
     },
     {
+      id: "med-echo",
       code: "VOICE / VLM",
       title: "Med Echo",
       year: "2025",
       type: "MULTIMODAL AI",
+      category: "Multimodal AI",
       summary:
+        "A medical voice assistant combining speech recognition, vision-language understanding, and neural TTS in a real-time Gradio experience with sub-15-second end-to-end latency.",
+      description:
         "A medical voice assistant combining speech recognition, vision-language understanding, and neural TTS in a real-time Gradio experience with sub-15-second end-to-end latency.",
       tags: ["Whisper V3", "Llama 4", "Groq", "Gradio"],
       link: "https://github.com/Rahul-Debnath260503/MedEcho-AI-Voice-Assistant",
+      categories: ["AI / ML"],
+      featured: true,
+      featuredOrder: 4,
+      links: {
+        github: "https://github.com/Rahul-Debnath260503/MedEcho-AI-Voice-Assistant",
+      },
     },
     {
+      id: "illegal-mining-detection",
       code: "SAR / ML",
       title: "Illegal Mining Detection",
       year: "2025",
       type: "RESEARCH",
+      category: "Remote Sensing Research",
       summary:
         "Multi-temporal change detection across Jharkhand and Odisha using Sentinel-1 SAR, Sentinel-2 optical data, spectral indices, and machine learning. Accepted at IEEE IGARSS 2026.",
+      description:
+        "Multi-temporal change detection across Jharkhand and Odisha using Sentinel-1 SAR, Sentinel-2 optical data, spectral indices, and machine learning. Accepted at IEEE IGARSS 2026.",
       tags: ["Sentinel-1/2", "GEE", "QGIS", "Machine Learning"],
+      categories: ["Geospatial", "Research", "AI / ML"],
+      featured: true,
+      featuredOrder: 5,
     },
     {
+      id: "synthetic-soil-nutrient-map-generation",
       code: "GEN / SOIL",
       title: "Generative AI for Synthetic Soil Nutrient Map Generation",
       year: "2025",
       type: "COURSE PROJECT",
+      category: "Generative AI | Spatial Data Analytics",
       summary:
+        "Spatial Data Analytics course project at Digital University Kerala. Designed a Diffusion Model-based Generative AI system to simulate and impute missing soil nutrient data, integrating remote sensing datasets and SoilGrids for enhanced spatial prediction in sustainable agriculture.",
+      description:
         "Spatial Data Analytics course project at Digital University Kerala. Designed a Diffusion Model-based Generative AI system to simulate and impute missing soil nutrient data, integrating remote sensing datasets and SoilGrids for enhanced spatial prediction in sustainable agriculture.",
       tags: ["Diffusion Models", "Generative AI", "Remote Sensing", "SoilGrids"],
       link: "https://github.com/Rahul-Debnath260503/NutriMap-AI",
+      categories: ["Geospatial", "Research", "AI / ML", "Data Analytics"],
+      featured: false,
+      links: {
+        github: "https://github.com/Rahul-Debnath260503/NutriMap-AI",
+      },
     },
   ],
   achievements: [

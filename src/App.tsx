@@ -16,9 +16,20 @@ import {
 import { portfolio } from "./data/portfolio";
 import "./App.css";
 
-const navItems = ["about", "experience", "education", "certifications", "research", "skills", "work", "contact"];
+const navItems = [
+  { label: "about", href: "/#about" },
+  { label: "experience", href: "/#experience" },
+  { label: "education", href: "/#education" },
+  { label: "certifications", href: "/#certifications" },
+  { label: "research", href: "/#research" },
+  { label: "skills", href: "/#skills" },
+  { label: "projects", href: "/projects" },
+  { label: "contact", href: "/#contact" },
+];
 
-function useReveal() {
+type PortfolioProject = (typeof portfolio.projects)[number];
+
+function useReveal(routeKey: string) {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
     const observer = new IntersectionObserver(
@@ -34,7 +45,7 @@ function useReveal() {
     );
     elements.forEach((element) => observer.observe(element));
     return () => observer.disconnect();
-  }, []);
+  }, [routeKey]);
 }
 
 function useMagnetic() {
@@ -409,11 +420,206 @@ function ContactForm() {
   );
 }
 
+function getProjectUrl(project: PortfolioProject) {
+  const links = project.links as { linkedin?: string; github?: string; live?: string } | undefined;
+  return links?.linkedin || links?.github || links?.live || project.link || "";
+}
+
+function ProjectCard({ project, index, compact = false }: { project: PortfolioProject; index: number; compact?: boolean }) {
+  const projectUrl = getProjectUrl(project);
+  const visualIndex = (index % 5) + 1;
+
+  return (
+    <article
+      className={`project-card${project.title.length > 48 ? " project-card--long-title" : ""}${compact ? " archive-project-card" : ""}`}
+      data-reveal
+      key={project.id || project.title}
+      data-cursor="large"
+      id={compact ? `project-${project.id}` : undefined}
+    >
+      <div className={`project-visual visual-${visualIndex}`}>
+        <span>{project.code}</span>
+        <div className="project-scan" />
+        <div className="project-map-lines" />
+      </div>
+      <div className="project-details">
+        <div className="project-kicker">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          {project.year} | {project.type}
+        </div>
+        <h3>{project.title}</h3>
+        <p>{project.summary}</p>
+        {project.contribution && <p className="project-contribution">Contribution: {project.contribution}</p>}
+        <div className="tag-row">
+          {project.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+        {projectUrl && (
+          <a href={projectUrl} target="_blank" rel="noopener noreferrer" data-magnetic>
+            View Project <FiArrowUpRight />
+          </a>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function ProjectsPage({ onNavigate }: { onNavigate: (href: string) => void }) {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const projects = portfolio.projects;
+  const categories = useMemo(
+    () => ["All", ...Array.from(new Set(projects.flatMap((project) => project.categories || [project.type]))).sort()],
+    [projects]
+  );
+  const visibleProjects = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    return projects.filter((project) => {
+      const categoryMatch = activeCategory === "All" || (project.categories || [project.type]).includes(activeCategory);
+      const haystack = [
+        project.title,
+        project.type,
+        project.category,
+        project.summary,
+        project.description,
+        project.contribution,
+        ...(project.tags || []),
+        ...(project.categories || []),
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return categoryMatch && (!query || haystack.includes(query));
+    });
+  }, [activeCategory, projects, searchQuery]);
+  const climaq = projects.find((project) => project.id === "climaq");
+
+  return (
+    <div className="projects-page section-pad">
+      <section className="project-archive-hero" data-reveal>
+        <a className="back-home-link" href="/" onClick={(event) => { event.preventDefault(); onNavigate("/"); }}>
+          <FiArrowDownRight /> Back to portfolio
+        </a>
+        <p className="eyebrow">Project Archive</p>
+        <h1>Systems built for the real world.</h1>
+        <p>
+          A collection of AI, machine learning, geospatial intelligence, data analytics, climate intelligence,
+          and applied research systems powered by one maintainable project archive.
+        </p>
+        <div className="archive-count">
+          <strong>{projects.length}</strong>
+          <span>{projects.length === 1 ? "Project" : "Projects"}</span>
+        </div>
+      </section>
+
+      {climaq && (
+        <section className="project-detail-panel" data-reveal aria-labelledby="climaq-detail-title">
+          <div>
+            <span className="paper-status">Featured Project</span>
+            <h2 id="climaq-detail-title">CLiMAQ</h2>
+            <p>{climaq.description}</p>
+          </div>
+          <dl>
+            <div>
+              <dt>Context</dt>
+              <dd>{climaq.context}</dd>
+            </div>
+            <div>
+              <dt>Domain</dt>
+              <dd>{climaq.domain}</dd>
+            </div>
+            <div>
+              <dt>My Contribution</dt>
+              <dd>{climaq.contribution}</dd>
+            </div>
+          </dl>
+          <a href={getProjectUrl(climaq)} target="_blank" rel="noopener noreferrer" data-magnetic>
+            LinkedIn project announcement <FiArrowUpRight />
+          </a>
+        </section>
+      )}
+
+      <section className="archive-controls" aria-label="Project filters" data-reveal>
+        <div className="archive-filter-row">
+          {categories.map((category) => (
+            <button
+              type="button"
+              key={category}
+              className={category === activeCategory ? "active" : ""}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+        <label className="project-search">
+          <span>Search projects</span>
+          <input
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Search title, category, technology..."
+          />
+        </label>
+      </section>
+
+      <section className="archive-grid" aria-label="All projects">
+        {visibleProjects.map((project, index) => (
+          <ProjectCard project={project} index={index} compact key={project.id || project.title} />
+        ))}
+      </section>
+    </div>
+  );
+}
+
 function App() {
-  useReveal();
+  const [route, setRoute] = useState(() => window.location.pathname);
+  useReveal(route);
   useMagnetic();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const isProjectsRoute = route === "/projects";
+  const featuredProjects = useMemo(
+    () =>
+      portfolio.projects
+        .filter((project) => project.featured)
+        .sort((a, b) => (a.featuredOrder ?? 999) - (b.featuredOrder ?? 999))
+        .slice(0, 5),
+    []
+  );
+
+  const navigate = (href: string) => {
+    const url = new URL(href, window.location.origin);
+    window.history.pushState({}, "", `${url.pathname}${url.hash}`);
+    setRoute(url.pathname);
+    setMenuOpen(false);
+    window.requestAnimationFrame(() => {
+      if (url.hash) {
+        document.querySelector(url.hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  };
+
+  useEffect(() => {
+    const onPopState = () => setRoute(window.location.pathname);
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  useEffect(() => {
+    document.title = isProjectsRoute ? "Projects | Rahul Debnath" : "Rahul Debnath | AI/ML Software Engineer";
+    let meta = document.querySelector<HTMLMetaElement>("meta[name='description']");
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.name = "description";
+      document.head.appendChild(meta);
+    }
+    meta.content = isProjectsRoute
+      ? "Explore Rahul Debnath's AI, machine learning, geospatial intelligence, data analytics, climate intelligence and research projects."
+      : "Rahul Debnath's AI/ML software engineering portfolio across Agentic AI, GeoAI, research, and production systems.";
+  }, [isProjectsRoute]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -447,9 +653,16 @@ function App() {
         </button>
         <nav id="main-navigation" className={menuOpen ? "nav-open" : ""}>
           {navItems.map((item, index) => (
-            <a href={`#${item}`} key={item} onClick={() => setMenuOpen(false)}>
+            <a
+              href={item.href}
+              key={item.href}
+              onClick={(event) => {
+                event.preventDefault();
+                navigate(item.href);
+              }}
+            >
               <span>0{index + 1}</span>
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>
@@ -459,6 +672,10 @@ function App() {
       </header>
 
       <main id="top">
+        {isProjectsRoute ? (
+          <ProjectsPage onNavigate={navigate} />
+        ) : (
+          <>
         <section className="hero section-pad">
           <div className="hero-meta hero-animate">
             <span>
@@ -613,7 +830,7 @@ function App() {
                   </div>
                 )}
                 {"semesters" in education && (
-                  <div className="academic-progress" aria-label="Semester Performance: Sem 1 7.15, Sem 2 8.85, Sem 3 9.25, Sem 4 10.00 out of 10">
+                  <div className="academic-progress" aria-label="Semester Performance: Sem 1 7.15 out of 10, Sem 2 8.85 out of 10, Sem 3 9.25 out of 10, Sem 4 10.00 / 10.00">
                     <div className="progress-head">
                       <span>Academic Progress</span>
                       <strong>+2.85 points</strong>
@@ -626,7 +843,7 @@ function App() {
                           key={semester.label}
                           style={{ "--score": semester.value } as { [key: string]: number }}
                           tabIndex={0}
-                          aria-label={`${semester.label}: ${semester.score} out of 10`}
+                          aria-label={`${semester.label}: ${semester.score}${semester.score.includes("/") ? "" : " out of 10"}`}
                         >
                           <strong>{semester.score}</strong>
                           <span>{semester.label}</span>
@@ -665,7 +882,7 @@ function App() {
                 <span className="certificate-category">{certificate.category}</span>
                 <p>{certificate.description}</p>
                 {"link" in certificate && certificate.link ? (
-                  <a href={certificate.link} target="_blank" rel="noreferrer" data-magnetic>
+                  <a href={certificate.link} target="_blank" rel="noopener noreferrer" data-magnetic>
                     View Credential <FiArrowUpRight />
                   </a>
                 ) : (
@@ -740,38 +957,23 @@ function App() {
             <h2>Systems built for the real world.</h2>
           </div>
           <div className="project-grid">
-            {portfolio.projects.map((project, index) => (
-              <article
-                className={`project-card${project.title.length > 48 ? " project-card--long-title" : ""}`}
-                data-reveal
-                key={project.title}
-                data-cursor="large"
-              >
-                <div className={`project-visual visual-${index + 1}`}>
-                  <span>{project.code}</span>
-                  <div className="project-scan" />
-                  <div className="project-map-lines" />
-                </div>
-                <div className="project-details">
-                  <div className="project-kicker">
-                    <span>0{index + 1}</span>
-                    {project.year} | {project.type}
-                  </div>
-                  <h3>{project.title}</h3>
-                  <p>{project.summary}</p>
-                  <div className="tag-row">
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                  {project.link && (
-                    <a href={project.link} target="_blank" rel="noreferrer" data-magnetic>
-                      GitHub / live proof <FiArrowUpRight />
-                    </a>
-                  )}
-                </div>
-              </article>
+            {featuredProjects.map((project, index) => (
+              <ProjectCard project={project} index={index} key={project.id || project.title} />
             ))}
+          </div>
+          <div className="project-archive-cta" data-reveal>
+            <p>Explore the full project archive</p>
+            <h3>{portfolio.projects.length} projects across AI, ML, geospatial intelligence, climate risk, data analytics, and applied research.</h3>
+            <a
+              href="/projects"
+              onClick={(event) => {
+                event.preventDefault();
+                navigate("/projects");
+              }}
+              data-magnetic
+            >
+              View All Projects <FiArrowUpRight />
+            </a>
           </div>
         </section>
 
@@ -826,6 +1028,8 @@ function App() {
             </div>
           </footer>
         </section>
+          </>
+        )}
       </main>
     </div>
   );
