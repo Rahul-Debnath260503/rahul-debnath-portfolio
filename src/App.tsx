@@ -2,6 +2,10 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   FiArrowDownRight,
   FiArrowUpRight,
+  FiAward,
+  FiBookOpen,
+  FiCloud,
+  FiCode,
   FiDownload,
   FiGithub,
   FiLinkedin,
@@ -12,7 +16,7 @@ import {
 import { portfolio } from "./data/portfolio";
 import "./App.css";
 
-const navItems = ["about", "experience", "research", "skills", "work", "contact"];
+const navItems = ["about", "experience", "education", "certifications", "research", "skills", "work", "contact"];
 
 function useReveal() {
   useEffect(() => {
@@ -579,9 +583,104 @@ function App() {
           </div>
         </section>
 
+        <section className="education section-pad" id="education">
+          <div className="section-index" data-reveal>
+            <span>03</span> Education
+          </div>
+          <div className="section-heading education-heading" data-reveal>
+            <p>Academic Foundation</p>
+            <h2>Data analytics, geoinformatics, and spatial reasoning built through a rising academic journey.</h2>
+          </div>
+          <div className="education-grid">
+            {portfolio.education.map((education, index) => (
+              <article className={index === 0 ? "education-card education-card--primary" : "education-card"} data-reveal key={education.degree}>
+                <div className="education-card-top">
+                  <span className="role-badge"><FiBookOpen /> {education.type}</span>
+                  <p className="timeline-date">{education.period}</p>
+                </div>
+                <h3>{education.degree}</h3>
+                {"specialization" in education && <p className="education-specialization">{education.specialization}</p>}
+                <div className="education-meta">
+                  <p>{education.institution}</p>
+                  {"formerly" in education && <span>{education.formerly}</span>}
+                  {"affiliation" in education && <span>{education.affiliation}</span>}
+                  <span>{education.location}</span>
+                </div>
+                {"cgpa" in education && (
+                  <div className="cgpa-chip">
+                    <span>CGPA</span>
+                    <strong>{education.cgpa}</strong>
+                  </div>
+                )}
+                {"semesters" in education && (
+                  <div className="academic-progress" aria-label="Semester Performance: Sem 1 7.15, Sem 2 8.85, Sem 3 9.25, Sem 4 10.00 out of 10">
+                    <div className="progress-head">
+                      <span>Academic Progress</span>
+                      <strong>+2.85 points</strong>
+                    </div>
+                    <div className="semester-line" role="list">
+                      {education.semesters?.map((semester, semesterIndex) => (
+                        <div
+                          className={semesterIndex === (education.semesters?.length ?? 0) - 1 ? "semester-node semester-node--final" : "semester-node"}
+                          role="listitem"
+                          key={semester.label}
+                          style={{ "--score": semester.value } as { [key: string]: number }}
+                          tabIndex={0}
+                          aria-label={`${semester.label}: ${semester.score} out of 10`}
+                        >
+                          <strong>{semester.score}</strong>
+                          <span>{semester.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="tag-row education-tags">
+                  {education.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="certifications section-pad" id="certifications">
+          <div className="section-index" data-reveal>
+            <span>04</span> Certifications
+          </div>
+          <div className="section-heading certification-heading" data-reveal>
+            <p>Verified Learning</p>
+            <h2>Cloud, analytics, and developer-tool credentials that strengthen production engineering work.</h2>
+          </div>
+          <div className="certification-grid">
+            {portfolio.certifications.map((certificate, index) => (
+              <article className={`certification-card certification-card--${certificate.icon}`} data-reveal key={`${certificate.provider}-${certificate.title}`}>
+                <div className="certification-icon" aria-hidden="true">
+                  {certificate.icon === "cloud" ? <FiCloud /> : <FiCode />}
+                </div>
+                <span className="certificate-index">0{index + 1}</span>
+                <p className="paper-project">{certificate.provider}</p>
+                <h3>{certificate.title}</h3>
+                <span className="certificate-category">{certificate.category}</span>
+                <p>{certificate.description}</p>
+                {"link" in certificate && certificate.link ? (
+                  <a href={certificate.link} target="_blank" rel="noreferrer" data-magnetic>
+                    View Credential <FiArrowUpRight />
+                  </a>
+                ) : (
+                  <small>
+                    <FiAward /> Authorized by Google · Offered through Coursera
+                  </small>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="research section-pad" id="research">
           <div className="section-index" data-reveal>
-            <span>03</span> Research & Publications
+            <span>05</span> Research & Publications
           </div>
           <div className="research-hero" data-reveal>
             <p>3 research papers accepted at international conferences</p>
@@ -610,7 +709,7 @@ function App() {
 
         <section className="skills section-pad" id="skills">
           <div className="section-index" data-reveal>
-            <span>04</span> Technical Competencies
+            <span>06</span> Technical Competencies
           </div>
           <div className="skills-grid">
             <div data-reveal>
@@ -634,7 +733,7 @@ function App() {
 
         <section className="work section-pad" id="work">
           <div className="section-index" data-reveal>
-            <span>05</span> Selected Projects
+            <span>07</span> Selected Projects
           </div>
           <div className="section-heading work-heading" data-reveal>
             <p>Selected Projects / 2025-2026</p>
@@ -678,7 +777,7 @@ function App() {
 
         <section className="achievements section-pad">
           <div className="section-index" data-reveal>
-            <span>06</span> Key Achievements
+            <span>08</span> Key Achievements
           </div>
           <div className="achievement-showcase" data-reveal>
             <p>Research & Professional Milestones</p>
