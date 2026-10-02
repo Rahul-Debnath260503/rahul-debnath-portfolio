@@ -202,9 +202,9 @@ export const portfolio = {
       detail: "Since 6 July 2026",
     },
     {
-      value: "3 + 2nd",
+      value: "3 Papers",
       label: "Research papers accepted at international conferences",
-      detail: "IEEE IGARSS 2026, RGS-IBG 2026, and AI-driven soil nutrient mapping research with 2nd position distinction",
+      detail: "IEEE IGARSS 2026, RGS-IBG 2026, plus a 2nd position distinction for AI-driven soil nutrient mapping research",
     },
     { value: "Lead", label: "Research team coordination", detail: "M.Sc students, PhD scholars, professionals, faculty, and HOD/Professor" },
     { value: "Agentic AI", label: "Delivered PolicyMind-AI", detail: "Insurance document intelligence using RAG and AI agents" },
