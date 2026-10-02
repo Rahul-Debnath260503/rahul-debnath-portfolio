@@ -204,10 +204,15 @@ export const portfolio = {
     {
       value: "3 Papers",
       label: "Research papers accepted at international conferences",
-      detail: "IEEE IGARSS 2026, RGS-IBG 2026, plus a 2nd position distinction for AI-driven soil nutrient mapping research",
+      detail: "IEEE IGARSS 2026, RGS-IBG 2026, and AI-driven soil nutrient mapping research",
+    },
+    {
+      value: "2nd Position",
+      label: "AI-driven soil nutrient mapping achievement",
+      detail: "Secured 2nd position for research on geostatistical, machine-learning, and deep-learning approaches",
     },
     { value: "Lead", label: "Research team coordination", detail: "M.Sc students, PhD scholars, professionals, faculty, and HOD/Professor" },
-    { value: "Agentic AI", label: "Delivered PolicyMind-AI", detail: "Insurance document intelligence using RAG and AI agents" },
+    { value: "Agentic AI", label: "Delivered PolicyMind-AI & ClimaQ Agent", detail: "Insurance document intelligence and climate-focused chatbot agent systems" },
     { value: "GeoAI", label: "Remote sensing specialization", detail: "SAR, optical imagery, GIS, and Earth observation workflows" },
   ],
 };
